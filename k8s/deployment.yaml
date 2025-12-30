@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cloud-ai 
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: cloud-ai
+  template:
+    metadata:
+      labels:
+        app: cloud-ai
+    spec:
+      containers:
+      - name: cloud-ai 
+        image: rajushikha1/cloud-ai:latest
+        ports:
+        - containerPort: 8000             
