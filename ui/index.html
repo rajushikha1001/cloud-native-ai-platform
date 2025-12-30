@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cloud Native AI Platform</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h2>AI Sentiment Prediction</h2>
+  <input id="txt" placeholder="Type something..." />
+  <button onclick="predict()">Predict</button>
+  <pre id="out"></pre>
+
+<script>
+async function predict(){
+  let txt=document.getElementById("txt").value;
+  let res=await fetch("/predict",{
+    method:"POST",
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({text:txt})
+  });
+  document.getElementById("out").innerText=
+     JSON.stringify(await res.json(),null,2);
+}
+</script>
+</body>
+</html>
